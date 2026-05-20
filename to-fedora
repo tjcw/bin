@@ -1,0 +1,2 @@
+#!/bin/bash -x
+rsync -rav ~/eclipse-workspace/live-build-fedora/ 192.168.122.203:~/eclipse-workspace/live-build-fedora/

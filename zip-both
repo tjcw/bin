@@ -1,0 +1,6 @@
+#!/bin/bash -x
+rm /home2/tjcw/screensaver-build/qemusaver-open-games/QemuSaverOpenGames-$1.zip
+rm /home2/tjcw/screensaver-build/qemusaver-open/QemuSaverOpen-$1.zip
+cd /home2/tjcw/screensaver-build/qemusaver-open-games/unzipped && time zip -r ../QemuSaverOpenGames-$1.zip .
+cd /home2/tjcw/screensaver-build/qemusaver-open/unzipped && time zip -r ../QemuSaverOpen-$1.zip .
+

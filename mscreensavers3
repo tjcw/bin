@@ -1,0 +1,8 @@
+#!/bin/bash -x
+cd ~/Documents/
+cp 'Linux as a Screensaver for Windows The Gift of Open Source Games and SBOMs for the Holidays - Linux.com.pdf' /media/tjcw/$1
+cp 20051220_dW_Linux-screensaver-for-Windows.pdf /media/tjcw/$1
+cp -pr /home2/tjcw/screensaver-package/isos-packed/release3*.iso /home2/tjcw/screensaver-package/isos-unpacked/release3/1/extras /home2/tjcw/screensaver-package/isos-unpacked/release3/1/QemuSaverOpen-1-9.zip /home2/tjcw/screensaver-package/isos-unpacked/release3/2/QemuSaverOpenGames-1-6.zip /media/tjcw/$1
+tar -chf - -C /home2/tjcw/Sources Linux-Screensavers-Source-20250112|tar -C /media/tjcw/$1 -xf -
+
+

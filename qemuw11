@@ -1,0 +1,2 @@
+#!/bin/bash
+qemu-system-x86_64 -cpu Skylake-Client-v3 -enable-kvm -m 4096 --chardev socket,id=chrtpm,path=/tmp/emulated_tpm/swtpm-sock -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0 -smp 2 -device intel-hda -device hda-duplex -usb -device usb-tablet -nic user,ipv6=off,model=rtl8139,mac=84:1b:77:c9:03:a6 -drive file=Windows10.qcow2.keep,format=qcow2 -bios /usr/share/ovmf/OVMF.fd

@@ -1,0 +1,2 @@
+#!/bin/bash -x
+time cp -pr /home2/tjcw/Sources/Linux-Screensavers-Source-20221031 /home2/tjcw/Sources/Linux-Screensavers-Source-20230613 /home2/tjcw/screensaver-package/isos-packed/release[12]*.iso /home2/tjcw/screensaver-package/isos-unpacked/release1/1/extras /media/tjcw/Screensavers

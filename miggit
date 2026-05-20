@@ -1,0 +1,9 @@
+#!/bin/bash
+for repo in binutils-2.31-AME gcc-7.3.1-AME gcc-ame-test gdb-8.2-AME libgpump lighthouse-gcc-ame ode ode4linux RTL8811AU
+do (
+  cd $repo && (
+    git remote add gitlab git@gitlab.com:tjcw/$repo.git
+    git push gitlab --all
+  )
+)
+done

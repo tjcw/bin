@@ -1,0 +1,6 @@
+#!/bin/bash -x
+#time cp -pr /home2/tjcw/Sources/Linux-Screensavers-Source-20230613 /home2/tjcw/screensaver-package/isos-packed/release2*.iso /home2/tjcw/screensaver-package/isos-unpacked/release2/1/extras /media/tjcw/Screensavers2
+cp -pr /home2/tjcw/screensaver-package/isos-packed/release2*.iso /home2/tjcw/screensaver-package/isos-unpacked/release2/1/extras /home2/tjcw/screensaver-package/isos-unpacked/release2/1/QemuSaverOpen-1-8.zip /home2/tjcw/screensaver-package/isos-unpacked/release2/2/QemuSaverOpenGames-1-5.zip /media/tjcw/$1
+tar -chf - -C /home2/tjcw/Sources Linux-Screensavers-Source-20230613|tar -C /media/tjcw/$1 -xf -
+
+

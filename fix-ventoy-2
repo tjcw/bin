@@ -1,0 +1,12 @@
+#!/bin/bash -x
+ventoy=/media/tjcw/Ventoy
+#rm ${ventoy}/QemuSaverOpen-1-10.zip
+#rm ${ventoy}/QemuSaverOpenGames-1-7.zip
+#rm ${ventoy}/SHA256SUMS
+rm ${ventoy}/Repositories.tar
+SOURCES_ROOT=/home2/tjcw/Sources
+VERSION=Linux-Screensavers-Source-20260424
+#cp -p ${SOURCES_ROOT}/${VERSION}/SHA* ${SOURCES_ROOT}/${VERSION}/*zip ${ventoy}
+cp -p ${SOURCES_ROOT}/${VERSION}/Repositories.tar ${ventoy}
+
+

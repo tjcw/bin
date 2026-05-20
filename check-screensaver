@@ -1,0 +1,12 @@
+#!/bin/bash -x
+for dev 
+do
+   (
+     cd ${dev} && (
+       sha512sum -c  /home/tjcw/Public/202604/Ventoy.SHA512
+       sha512sum -c  /home/tjcw/Public/202604/Secondary.SHA512 
+     ) 
+   ) >/home/tjcw/Logs/$(basename ${dev}).check.log 2>&1 & 
+done 
+wait
+

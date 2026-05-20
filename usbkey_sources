@@ -1,0 +1,32 @@
+#!/bin/bash -x
+SOURCES_ROOT=/home2/tjcw/Sources
+VERSION=Linux-Screensavers-Source-20260424
+
+function copy_to_usb
+{
+  cp -pr /home2/tjcw/Ventoy $1
+  cp -p ~/Videos/BillboardBootCompressed.mp4 $1
+  cp -pr /home2/tjcw/Linux-Screensavers-for-Windows/Articles $1
+  cp -pr /home2/tjcw/screensaver-package/LinuxFoundation $1
+  (
+    cd ${SOURCES_ROOT}/${VERSION}
+    cp -pr . $1
+  )
+}
+
+for repo in ${SOURCES_ROOT}/Repositories/*
+do
+  (
+    cd ${repo}
+    git pull
+  )
+done
+(
+  cd ${SOURCES_ROOT}
+  tar -cf ${VERSION}/Source/Repositories.tar Repositories
+)
+for USB_ROOT
+do
+ copy_to_usb ${USB_ROOT} &
+done
+wait

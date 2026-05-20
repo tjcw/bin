@@ -1,0 +1,14 @@
+#!/bin/bash -x
+for dev 
+do
+   (
+     cd /home/tjcw/Public/202604/Ventoy && cp -fpr --update=none . ${dev}/
+     cd /home/tjcw/Public/202604/Secondary && cp -fpr --update=none . ${dev}/
+     cd ${dev} && (
+       sha512sum -c  /home/tjcw/Public/202604/Ventoy.SHA512
+       sha512sum -c  /home/tjcw/Public/202604/Secondary.SHA512 
+     ) 
+   ) >/home/tjcw/Logs/$(basename ${dev}).log 2>&1 & 
+done 
+wait
+
