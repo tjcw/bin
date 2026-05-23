@@ -2,13 +2,20 @@
 for dev
 do
    (
-     cd /home/tjcw/Public/202604/Ventoy && rsync -rav --inplace --modify-window=1 . ${dev}/
-     cd /home/tjcw/Public/202604/Secondary && rsync -rav --inplace --modify-window=1 . ${dev}/
+     cd ${HOME}/Public/202604/Ventoy && rsync -rav --inplace --modify-window=1 . ${dev}/
+     cd ${HOME}/Public/202604/Secondary && rsync -rav --inplace --modify-window=1 . ${dev}/
      cd ${dev} && (
-       sha512sum -c  /home/tjcw/Public/202604/Ventoy.SHA512
-       sha512sum -c  /home/tjcw/Public/202604/Secondary.SHA512
+       sha512sum -c  ${HOME}/Public/202604/Ventoy.SHA512
+       sha512sum -c  ${HOME}/Public/202604/Secondary.SHA512
      )
-   ) >/home/tjcw/Logs/$(basename ${dev}).txt 2>&1 &
+   ) 2>&1 | tee ${HOME}/Logs/$(basename ${dev}).log & 
 done
 wait
+for dev
+do 
+  (
+    echo "-- $(basename ${dev}) --"
+    cat ${HOME}/Logs/$(basename ${dev}).log
+  )
+done
 

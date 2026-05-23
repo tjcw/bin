@@ -3,18 +3,18 @@ for dev
 do
    (
      cd ${dev} && (
-       sha512sum -c  /home/tjcw/Public/202604/Ventoy.SHA512
+       sha512sum -c  ${HOME}/Public/202604/Ventoy.SHA512
        echo "rc1="$?
-       sha512sum -c  /home/tjcw/Public/202604/Secondary.SHA512 
+       sha512sum -c  ${HOME}/Public/202604/Secondary.SHA512 
      ) 
-   ) | tee /home/tjcw/Logs/$(basename ${dev}).check.log 2>&1 & 
+   ) | tee ${HOME}/Logs/$(basename ${dev}).check.log 2>&1 & 
 done 
 wait
 for dev
 do 
   (
-    echo "--
-    cat /home/tjcw/Logs/$(basename ${dev}).check.log
+    echo "-- $(basename ${dev}) --"
+    cat ${HOME}/Logs/$(basename ${dev}).check.log
   )
 done
 
