@@ -1,0 +1,29 @@
+#!/bin/bash -x
+function make-both 
+{
+    cp -fpr --update=none . ${dev}/
+    cp -fpr --update=none . ${dev}/
+    rsync -rav --inplace --checksum . ${dev}/
+    rsync -rav --inplace --checksum . ${dev}/
+}
+for dev
+do
+  (
+    cd ${HOME}/Public/202604/Ventoy && make-both
+    cd ${HOME}/Public/202604/Secondary && make-both
+
+    cd ${dev} && (
+      sha512sum -c  ${HOME}/Public/202604/Ventoy.SHA512
+      sha512sum -c  ${HOME}/Public/202604/Secondary.SHA512
+    )
+  ) 2>&1 | tee ${HOME}/Logs/$(basename ${dev}).log & 
+done
+wait
+for dev
+do 
+  (
+    echo "-- $(basename ${dev}) --"
+    cat ${HOME}/Logs/$(basename ${dev}).log
+  )
+done
+
