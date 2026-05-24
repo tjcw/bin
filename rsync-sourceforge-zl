@@ -1,0 +1,1 @@
+rsync -avP -e ssh . tjcw01@frs.sourceforge.net:/home/frs/project/mainframe-on-a-desktop/release1/
