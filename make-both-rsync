@@ -1,0 +1,32 @@
+#!/bin/bash -x
+function make-rsync 
+{
+    mkdir -p ${dev}/$2
+#    cp -fpr --update=none $1 ${dev}/$2
+#    cp -fpr --update=none $1 ${dev}/$2
+    rsync -rav --inplace --checksum $1 ${dev}/$2
+    rsync -rav --inplace --checksum $1 ${dev}/$2
+}
+for dev
+do
+  (
+    cd ${HOME}/Public/202604/Ventoy && make-rsync . .
+    cd ${HOME}/Public/202604/Secondary && make-rsync . .
+    cd /run/media/tjcw/fedora/home/tjcw/Staging && make-both fedora fedora
+
+    cd ${dev} && (
+      sha512sum -c  ${HOME}/Public/202604/Ventoy.SHA512
+      sha512sum -c  ${HOME}/Public/202604/Secondary.SHA512
+      sha512sum -c  ${HOME}/Public/202604/fedora.SHA512
+    )
+  ) 2>&1 | tee ${HOME}/Logs/$(basename ${dev}).log & 
+done
+wait
+for dev
+do 
+  (
+    echo "-- $(basename ${dev}) --"
+    cat ${HOME}/Logs/$(basename ${dev}).log
+  )
+done
+
