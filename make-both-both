@@ -17,7 +17,7 @@ do
     cd ${dev} && (
       sha512sum -c  ${HOME}/Public/202604/Ventoy.SHA512
       sha512sum -c  ${HOME}/Public/202604/Secondary.SHA512
-#      sha512sum -c  ${HOME}/Public/202604/fedora.SHA512
+      sha512sum -c  ${HOME}/Public/202604/fedora.SHA512
     )
   ) 2>&1 | tee ${HOME}/Logs/$(basename ${dev}).log & 
 done

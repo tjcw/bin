@@ -12,7 +12,7 @@ do
   (
     cd ${HOME}/Public/202604/Ventoy && make-rsync . .
     cd ${HOME}/Public/202604/Secondary && make-rsync . .
-    cd /run/media/tjcw/fedora/home/tjcw/Staging && make-both fedora fedora
+    cd /run/media/tjcw/fedora/home/tjcw/Staging && make-rsync fedora fedora
 
     cd ${dev} && (
       sha512sum -c  ${HOME}/Public/202604/Ventoy.SHA512
