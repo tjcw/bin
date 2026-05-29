@@ -1,4 +1,0 @@
-+ for dev in "$@"
-+ wait
-+ cd /run/media/tjcw/Screensaver
-++ basename /run/media/tjcw/Screensaver

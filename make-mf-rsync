@@ -1,0 +1,19 @@
+#!/bin/bash -x
+for dev
+do
+   (
+     cd ${HOME}/Staging/nanomainframe && rsync -rav --inplace --checksum . ${dev}/
+     cd ${dev} && (
+       sha512sum -c  ${HOME}/Staging/nanomainframe.SHA512
+     )
+   ) 2>&1 | tee ${HOME}/Logs/$(basename ${dev}).log & 
+done
+wait
+for dev
+do 
+  (
+    echo "-- $(basename ${dev}) --"
+    cat ${HOME}/Logs/$(basename ${dev}).log
+  )
+done
+
