@@ -1,0 +1,20 @@
+#!/bin/bash -x
+function sfiles
+{
+  (
+    cd $1 &&
+    find . -type f -print
+  )
+}
+
+for f in $(sfiles $1)
+do
+  date
+  comp_out=$(comp $(cygpath -w $f) $(cygpath -w $1/$f))
+  echo "${comp_out}" | fgrep "Files compare OK"
+  rc=$?
+  if [[ "${rc}" -eq 0 ]]
+  then echo "$f OK"
+  else echo "$f FAIL"
+  fi
+done </dev/null
