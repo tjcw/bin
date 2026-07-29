@@ -1,0 +1,7 @@
+#!/bin/bash
+find . -type f |
+while read name
+do
+  sha512sum <"${name}" | tr -d '\n-'
+  echo ${name} 
+done
