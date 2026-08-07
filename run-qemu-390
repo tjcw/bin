@@ -1,0 +1,18 @@
+#!/bin/bash -x
+qemu-system-s390x -monitor stdio \
+-name "guest" \
+-m 4096 \
+-mem-prealloc \
+-blockdev file,node-name=c1,filename=/home/tjcw/Downloads/live-image-s390x.hybrid.iso \
+                  -device virtio-scsi \
+                  -device scsi-cd,drive=c1,bootindex=1 \
+#-serial none \
+#-parallel none \
+#-usb \
+#-device usb-ehci,id=ehci \
+#-machine pc,accel=kvm,kernel_irqchip=on,mem-merge=off \
+#-device usb-tablet
+#-device usb-host,hostbus=3,hostaddr=11 \
+#-drive file=/home/tjcw/knoppix.qcow2,format=qcow2,if=none,id=drive-sata0-0-0 \
+#-device virtio-blk-pci,drive=drive-sata0-0-0,id=sata0-0-0 \
+

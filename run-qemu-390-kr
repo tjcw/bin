@@ -1,0 +1,26 @@
+#!/bin/bash -x
+qemu-system-s390x -M s390-ccw-virtio \
+-monitor stdio \
+-name "guest" \
+-m 4096 \
+-mem-prealloc \
+-kernel /home/tjcw/Downloads/liveboot/vmlinuz \
+-initrd /home/tjcw/Downloads/liveboot/initrd \
+-append 'boot=live' \
+-blockdev file,node-name=c1,filename=$1 \
+                  -device virtio-scsi \
+                  -device scsi-cd,drive=c1 \
+-netdev user,id=net0,hostfwd=tcp::2222-:22 \
+    -device virtio-net-ccw,netdev=net0,id=net0_dev 
+#-drive file=/home/tjcw/VMs/s390x-vm.qcow2,format=qcow2,if=none,id=drive-sata0-0-0 \
+#-device virtio-blk-pci,drive=drive-sata0-0-0,id=sata0-0-0 \
+#-serial none \
+#-parallel none \
+#-usb \
+#-device usb-ehci,id=ehci \
+#-machine pc,accel=kvm,kernel_irqchip=on,mem-merge=off \
+#-device usb-tablet
+#-device usb-host,hostbus=3,hostaddr=11 \
+#-drive file=/home/tjcw/knoppix.qcow2,format=qcow2,if=none,id=drive-sata0-0-0 \
+#-device virtio-blk-pci,drive=drive-sata0-0-0,id=sata0-0-0 \
+
