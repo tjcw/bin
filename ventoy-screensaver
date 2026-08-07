@@ -1,2 +1,2 @@
 #!/bin/bash -x
-cd /home/tjcw/Ventoy/ventoy-1.1.16 && bash ./Ventoy2Disk.sh -I -g -L Screensaver $1
+cd /home/tjcw/Ventoy/ventoy-1.1.17 && bash ./Ventoy2Disk.sh -I -g -L Screensaver $1
