@@ -2,5 +2,16 @@
 rm /home2/tjcw/screensaver-build/qemusaver-open-games/QemuSaverOpenGames-$1.zip
 rm /home2/tjcw/screensaver-build/qemusaver-open/QemuSaverOpen-$1.zip
 cd /home2/tjcw/screensaver-build/qemusaver-open-games/unzipped && time zip -r ../QemuSaverOpenGames-$1.zip .
+mkdir /home2/tjcw/screensaver-package/QemuSaverOpen-$1
+ln /home2/tjcw/screensaver-build/qemusaver-open-games/QemuSaverOpenGames-$1.zip /home2/tjcw/screensaver-package/QemuSaverOpen-$1
 cd /home2/tjcw/screensaver-build/qemusaver-open/unzipped && time zip -r ../QemuSaverOpen-$1.zip .
+ln /home2/tjcw/screensaver-build/qemusaver-open/QemuSaverOpen-$1.zip /home2/tjcw/screensaver-package/QemuSaverOpen-$1
+ln /home2/tjcw/screensaver-package/QemuSaverOpen-1-11/*pdf /home2/tjcw/screensaver-package/QemuSaverOpen-$1
+(
+  cd /home2/tjcw/screensaver-package/QemuSaverOpen-$1
+  sha256sum *.zip >SHA256SUMS
+  sha512sum *.zip >SHA512SUMS
+  mkdir ~/Downloads/$1
+  cp -pr . ~/Downloads/$1/
+)
 
