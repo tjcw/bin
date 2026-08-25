@@ -3,9 +3,9 @@ for dev
 do
    (
      cd ${dev} && (
-       sha512sum -c  ${HOME}/Public/202604/Ventoy.SHA512
+       sha512sum -c  ${HOME}/Public/202608/Ventoy.SHA512
        echo "rc1="$?
-       sha512sum -c  ${HOME}/Public/202604/Secondary.SHA512 
+       sha512sum -c  ${HOME}/Public/202608/Secondary.SHA512 
      ) 
    ) | tee ${HOME}/Logs/$(basename ${dev}).check.log 2>&1 & 
 done 
