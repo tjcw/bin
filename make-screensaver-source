@@ -1,0 +1,16 @@
+#!/bin/bash -x
+for dev 
+do
+   (
+     rm ${dev}/Source/Debian/*
+     rm ${dev}/Repositories.tar
+     rm ${dev}/Source/Repositories.tar
+     cp -pr /home/tjcw/Public/202608/Ventoy/Source/ ${dev}/Source/
+     cd ${dev} && (
+       sha512sum -c  /home/tjcw/Public/202608/Ventoy.SHA512
+       sha512sum -c  /home/tjcw/Public/202608/Secondary.SHA512 
+     ) 
+   ) >/home/tjcw/Logs/$(basename ${dev}).log 2>&1 & 
+done 
+wait
+
