@@ -1,0 +1,15 @@
+#!/bin/bash -x
+for dev 
+do
+   (
+     rm ${dev}/Installation/*
+     cp -pr /home/tjcw/Public/202608/Ventoy/Installation/* ${dev}/Installation/
+     cp -pr /home/tjcw/Public/202608/Secondary/Installation/* ${dev}/Installation/
+     cd ${dev} && (
+       sha512sum -c  /home/tjcw/Public/202608/Ventoy.SHA512
+       sha512sum -c  /home/tjcw/Public/202608/Secondary.SHA512 
+     ) 
+   ) >/home/tjcw/Logs/$(basename ${dev}).log 2>&1 & 
+done 
+wait
+
